@@ -4,6 +4,7 @@ import { createLogger, format, transports } from 'winston'
 import config from '@/config.js'
 
 import { tg } from './bot/bot.js'
+import { server } from './web/web.js'
 
 const logger = createLogger({
   level: 'info',
@@ -35,6 +36,10 @@ const init = async () => {
   }, (me) => {
     logger.info(`logged in as ${me.firstName}`)
   })
+
+  await server.listen({ host: config.web.host, port: config.web.port })
+    .then(() => logger.info('server started'))
+    .catch((err) => logger.error(err))
 }
 
 init()
