@@ -25,6 +25,7 @@ export default {
   },
   autoban: {
     inactiveTime: env.get('AUTOBAN_INACTIVE_TIME').default(604800).asInt(),
+    whitelistedChats: env.get('AUTOBAN_WHITELISTED_CHATS').default([]).asArray().map(Number),
   },
   web: {
     host: env.get('WEB_HOST').default('0.0.0.0').asString(),
