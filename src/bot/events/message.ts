@@ -39,7 +39,7 @@ export default async (context: MessageContext) => {
     🚫 <b>sorry, you can't write to this account</b><br>
     please, <a href="https://femboy.page?utm_source=autoban">contact me</a> to get unbanned
     <br><br>
-    <b>note:</b> you need to provide this magic string so i can identity you:
+    <b>note:</b> you need to provide this magic string so i can identify you:
     <pre><code class="base64">${encrypted.toString('base64')}</code></pre>
   `
 
