@@ -13,5 +13,5 @@ server.get('/contacts', async (_, res) => {
   const cipher = createCipheriv('aes-256-cbc', Buffer.from(config.crypto.key, 'hex'), Buffer.from(config.crypto.iv, 'hex'))
   const encrypted = Buffer.concat([cipher.update(contacts.map((contact) => contact.id).join(',')), cipher.final()])
 
-  res.send({ contacts: encrypted })
+  res.send({ contacts: encrypted.toString('base64') })
 })
