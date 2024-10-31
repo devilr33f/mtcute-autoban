@@ -10,7 +10,7 @@ const isBanNeeded = async (context: MessageContext): Promise<string | null> => {
   const sender = context.sender as User
   const chatHistory = await tg.getHistory(sender.inputPeer, { limit: 2 })
 
-  const commonChats = await tg.getCommonChats(sender.inputPeer)
+  const commonChats = await tg.getCommonChats(sender.inputPeer) // @todo: cache common chats for some time
   if (commonChats.some(chat => config.autoban.whitelistedChats.includes(chat.id))) return null
 
   if (!sender.isContact && chatHistory.length < 2) return 'non_contact'

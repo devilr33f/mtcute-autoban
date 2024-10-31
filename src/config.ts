@@ -30,5 +30,6 @@ export default {
   web: {
     host: env.get('WEB_HOST').default('0.0.0.0').asString(),
     port: env.get('WEB_PORT').default(3000).asInt(),
+    tokens: env.get('WEB_TOKENS').default([]).asArray(),
   },
 }
