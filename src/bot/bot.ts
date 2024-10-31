@@ -14,6 +14,9 @@ export const tg = new TelegramClient({
   apiId: config.telegram.apiId,
   apiHash: config.telegram.apiHash,
   storage: join(__dirname, '..', config.telegram.storagePath),
+  initConnectionOptions: {
+    deviceModel: 'Autoban Bot',
+  },
 })
 
 export const dp = Dispatcher.for(tg)
