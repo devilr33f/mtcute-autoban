@@ -40,7 +40,7 @@ export default async (context: MessageContext) => {
 
   const message = html`
     🚫 <b>sorry, you can't write to this account</b><br>
-    please, <a href="https://femboy.page?utm_source=autoban">contact me</a> to get unbanned
+    please, <a href="https://t.me/devilr33f">contact me</a> to get unbanned
     <br><br>
     <b>note:</b> you need to provide this magic string so i can identify you:
     <pre><code class="base64">${encrypted.toString('base64')}</code></pre>
@@ -52,6 +52,14 @@ export default async (context: MessageContext) => {
 
   await Promise.all([
     tg.blockUser(context.sender.inputPeer),
+    config.autoban.spamReportEnabled && tg.call({
+      _: 'account.reportPeer',
+      peer: { _: 'inputPeerUser', userId: context.sender.id, accessHash: context.sender.raw.accessHash! },
+      reason: {
+        _: 'inputReportReasonSpam',
+      },
+      message: '',
+    }),
     tg.sendText('self', html`🚫 banned <code>${context.sender.id}</code> due to <code>${verdict ?? 'unknown'}</code>`),
   ])
 }
