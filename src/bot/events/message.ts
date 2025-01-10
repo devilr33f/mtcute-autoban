@@ -2,6 +2,7 @@ import { createCipheriv } from 'node:crypto'
 
 import type { MessageContext } from '@mtcute/dispatcher'
 import { html, type User } from '@mtcute/node'
+import { toInputPeer } from '@mtcute/node/utils.js'
 
 import { tg } from '@/bot/bot.js'
 import config from '@/config.js'
@@ -54,7 +55,7 @@ export default async (context: MessageContext) => {
     tg.blockUser(context.sender.inputPeer),
     config.autoban.spamReportEnabled && tg.call({
       _: 'account.reportPeer',
-      peer: { _: 'inputPeerUser', userId: context.sender.id, accessHash: context.sender.raw.accessHash! },
+      peer: toInputPeer(context.sender.inputPeer),
       reason: {
         _: 'inputReportReasonSpam',
       },
