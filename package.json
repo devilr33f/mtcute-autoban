@@ -1,7 +1,7 @@
 {
   "name": "mtcute-autoban",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "./src/index.js",
   "author": {
     "name": "devilreef",
@@ -42,8 +42,8 @@
     "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@mtcute/dispatcher": "0.18.0-rc.6-coboldfix.1",
-    "@mtcute/node": "0.18.0-rc.6-coboldfix.1",
+    "@mtcute/dispatcher": "0.18.0-rc.6-coboldfix.3",
+    "@mtcute/node": "0.18.0-rc.6-coboldfix.3",
     "common-tags": "^1.8.2",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.7",
