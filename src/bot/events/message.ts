@@ -53,7 +53,7 @@ export default async (context: MessageContext) => {
 
   await Promise.all([
     tg.blockUser(context.sender.inputPeer),
-    config.autoban.spamReportEnabled && tg.call({
+    (config.autoban.spamReportEnabled && verdict === 'non_contact') && tg.call({
       _: 'account.reportPeer',
       peer: toInputPeer(context.sender.inputPeer),
       reason: {
