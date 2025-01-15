@@ -25,7 +25,7 @@ const isBanNeeded = async (context: MessageContext): Promise<string | null> => {
 }
 
 export default async (context: MessageContext) => {
-  if (context.chat.type !== 'user' || context.sender.type !== 'user') return
+  if (context.chat.type !== 'user' || context.chat.isBot || context.sender.type !== 'user') return
 
   if ([
     context.sender.isSelf,
